@@ -15,6 +15,6 @@
  
   "version": "3.10.1",
   "typescript": {
-        "definition": "typings/openlayers.d.ts"
+        "definition": ["typings/openlayers.d.ts","typings/proj4.d.ts"]
    }
 }
