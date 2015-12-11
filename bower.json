@@ -11,10 +11,9 @@
   "authors": [ "ol3" ],
   "homepage": "",
   "description": "local ol3 package",
-  "license": "MIT",
- 
-  "version": "3.10.1",
+  "license": "MIT", 
+  "version": "3.11.2",
   "typescript": {
-        "definition": ["typings/openlayers.d.ts","typings/proj4.d.ts"]
+        "definition": ["v3.11.2/typings/openlayers.d.ts","v3.11.2/typings/proj4.d.ts"]
    }
 }
