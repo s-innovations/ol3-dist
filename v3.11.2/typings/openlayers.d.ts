@@ -540,6 +540,10 @@ declare module ol {
 
     }
     module interaction {
+        class Translate extends Pointer{
+            constructor(options:{features?:ol.Collection<ol.Feature>})
+
+        }
         class MouseWheelZoom extends Interaction {
         }
         class Interaction extends Object {
