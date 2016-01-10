@@ -162,7 +162,7 @@ declare module ol {
     }
     class Geolocation {
     }
-    class Coordinate {
+    class Coordinate extends Array<number> {
         constructor(lng: number, lat: number)
     }
 
@@ -183,6 +183,7 @@ declare module ol {
         on(type, listener, opt_this?);
         bindTo(type, el);
         once(type, listener, opt_this?);
+        dispatchEvent(event);
     }
 
     //http://ol3js.org/en/master/apidoc/ol.Collection.html
@@ -433,6 +434,8 @@ declare module ol {
         }
         class Circle {
             constructor(options: { radius?; fill?;stroke?})
+
+
         }
         class Text {
              constructor(options?: any)
@@ -498,15 +501,20 @@ declare module ol {
             CIRCLE
         }
 
-        class Geometry extends Observable {
+        class Geometry extends Object {
 
             clone();
             //An array of numbers representing an extent: [minx, miny, maxx, maxy].      
             getExtent(opt_extent?: any): number[];
             getType():string;
-
+            getClosestPoint(point : ol.Coordinate, opt_closestPoint?:ol.Coordinate) : ol.Coordinate;
+          
         }
         class SimpleGeometry extends Geometry {
+
+            applyTransform(transformFn):void;
+            getFirstCoordinate():number[];
+            getLastCoordinate():number[];
 
         }
         class LineString extends SimpleGeometry {
@@ -522,7 +530,9 @@ declare module ol {
         class Point extends Geometry {
             getCoordinates(): number[];
             setCoordinates(coord: number[]);
-            constructor(data: any)
+            constructor(data: any);
+
+
         }
         class GeometryCollection extends Geometry {
             constructor(geoms?: Array<Geometry>);
@@ -533,9 +543,20 @@ declare module ol {
             setCoordinates(rawpolygon: any[]);
             getInteriorPoint();
             getArea(): number;
+
         }
-        class Circle extends Geometry {
-        constructor(center: number[], radius: number)
+        class Circle extends SimpleGeometry {
+            constructor(center: number[], opt_radius?: number, opt_layout?);
+
+            clone() : Circle;
+            getCenter() : number[];
+            getRadius():number;
+            intersectsExtent(extent:ol.Extent):boolean;
+            setCenter(center:number[]);
+            setRadius(radius:number);
+
+
+
         }
 
     }
