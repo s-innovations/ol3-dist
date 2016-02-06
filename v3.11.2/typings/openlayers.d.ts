@@ -162,8 +162,9 @@ declare module ol {
     }
     class Geolocation {
     }
-    class Coordinate extends Array<number> {
-        constructor(lng: number, lat: number)
+
+    interface Coordinate extends Array<number> {
+      
     }
 
     class ObjectAccsor {
@@ -287,7 +288,7 @@ declare module ol {
         }
         class Group extends Base {
             constructor(options?: any);
-            addLayer(layer: Base);
+            getLayers(): ol.Collection<ol.layer.Base>;
         }
         class Base extends Object {
             setVisible(visible: boolean)
