@@ -182,6 +182,7 @@ declare module ol {
     class Observable {
         changed();
         on(type, listener, opt_this?);
+        un(type, listener, opt_this?);
         bindTo(type, el);
         once(type, listener, opt_this?);
         dispatchEvent(event);
