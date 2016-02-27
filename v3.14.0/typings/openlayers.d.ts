@@ -12,6 +12,26 @@
 
 // Stubs for Closure Library types
 
+/**
+
+Manual Changes:
+
+Action: Changed baseOption to support [key:string]:any and used base classes as base for other options.
+Justification:
+Abstract base class; normally only used for creating subclasses and not instantiated in apps. Note that with ol.layer.Base and all its subclasses, any property set in the options is set as a ol.Object property on the layer object, so is observable, and has get/set accessors.
+http://openlayers.org/en/v3.14.0/apidoc/ol.layer.Base.html
+
+Action: Changed SelectOptions.layers to optional. 
+Justification: It said so in docs.
+
+Action: VectorOptions renderOrder made optional.
+Justification: It said so in docs.
+
+Action: feature.GetGeometry made generic 
+justificatio: This is how we use it in our libraries.
+
+*/
+
 declare module goog {
     class Disposable {
         
@@ -600,7 +620,7 @@ declare module ol {
          * geometries.  The "default" geometry (the one that is rendered by default) is
          * set when calling {@link ol.Feature#setGeometry}.
          */
-        getGeometry(): ol.geom.Geometry;
+        getGeometry<T extends ol.geom.Geometry>(): T;
         /**
          * Get the feature identifier.  This is a stable identifier for the feature and
          * is either set when reading data from a remote source or set explicitly by
@@ -16200,7 +16220,7 @@ declare module olx {
              * `true` for layers that you want to be selectable. If the option is
              * absent, all visible layers will be considered selectable.
              */
-            layers: ol.layer.Layer[]|Function;
+            layers?: ol.layer.Layer[]|Function;
             /**
              * Style for the selected features. By default the default edit style is used
              * (see {@link ol.style}).
@@ -17097,74 +17117,30 @@ declare module olx {
              * The maximum resolution (exclusive) below which this layer will be visible.
              */
             maxResolution?: number;
+
+            /**
+             *Note that with ol.layer.Base and all its subclasses, any property set in the options is set as a ol.Object property on the layer object, so is observable, and has get/set accessors.
+             */
+            [key: string]: any;
         }
         /**
          * TODO: This typedef has no documentation. Contact the library author if this typedef should be documented
          */
-        interface LayerOptions {
-            /**
-             * Opacity (0, 1). Default is `1`.
-             */
-            opacity?: number;
+        interface LayerOptions extends BaseOptions {
+          
             /**
              * Source for this layer.  If not provided to the constructor, the source can
              * be set by calling {@link ol.layer.Layer#setSource layer.setSource(source)}
              * after construction.
              */
             source?: ol.source.Source;
-            /**
-             * Visibility. Default is `true` (visible).
-             */
-            visible?: boolean;
-            /**
-             * The bounding extent for layer rendering.  The layer will not be rendered
-             * outside of this extent.
-             */
-            extent?: ol.Extent;
-            /**
-             * The z-index for layer rendering.  At rendering time, the layers will be
-             * ordered, first by Z-index and then by position. The default Z-index is 0.
-             */
-            zIndex?: number;
-            /**
-             * The minimum resolution (inclusive) at which this layer will be visible.
-             */
-            minResolution?: number;
-            /**
-             * The maximum resolution (exclusive) below which this layer will be visible.
-             */
-            maxResolution?: number;
+           
         }
         /**
          * TODO: This typedef has no documentation. Contact the library author if this typedef should be documented
          */
-        interface GroupOptions {
-            /**
-             * Opacity (0, 1). Default is `1`.
-             */
-            opacity?: number;
-            /**
-             * Visibility. Default is `true`.
-             */
-            visible?: boolean;
-            /**
-             * The bounding extent for layer rendering.  The layer will not be rendered
-             * outside of this extent.
-             */
-            extent?: ol.Extent;
-            /**
-             * The z-index for layer rendering.  At rendering time, the layers will be
-             * ordered, first by Z-index and then by position. The default Z-index is 0.
-             */
-            zIndex?: number;
-            /**
-             * The minimum resolution (inclusive) at which this layer will be visible.
-             */
-            minResolution?: number;
-            /**
-             * The maximum resolution (exclusive) below which this layer will be visible.
-             */
-            maxResolution?: number;
+        interface GroupOptions extends BaseOptions {
+            
             /**
              * Child layers.
              */
@@ -17173,7 +17149,7 @@ declare module olx {
         /**
          * TODO: This typedef has no documentation. Contact the library author if this typedef should be documented
          */
-        interface HeatmapOptions {
+        interface HeatmapOptions extends BaseOptions {
             /**
              * The color gradient of the heatmap, specified as an array of CSS color
              * strings. Default is `['#00f', '#0ff', '#0f0', '#ff0', '#f00']`.
@@ -17197,40 +17173,18 @@ declare module olx {
              * outside will be clamped to that range). Default is `weight`.
              */
             weight: string|Function;
-            /**
-             * The bounding extent for layer rendering.  The layer will not be rendered
-             * outside of this extent.
-             */
-            extent?: ol.Extent;
-            /**
-             * The minimum resolution (inclusive) at which this layer will be visible.
-             */
-            minResolution?: number;
-            /**
-             * The maximum resolution (exclusive) below which this layer will be visible.
-             */
-            maxResolution?: number;
-            /**
-             * Opacity. 0-1. Default is `1`.
-             */
-            opacity?: number;
+           
             /**
              * Source.
              */
             source: ol.source.Vector;
-            /**
-             * Visibility. Default is `true` (visible).
-             */
-            visible?: boolean;
+            
         }
         /**
          * TODO: This typedef has no documentation. Contact the library author if this typedef should be documented
          */
-        interface ImageOptions {
-            /**
-             * Opacity (0, 1). Default is `1`.
-             */
-            opacity?: number;
+        interface ImageOptions extends BaseOptions {
+          
             /**
              * Source for this layer.
              */
@@ -17242,32 +17196,13 @@ declare module olx {
              * managed by the map is to use {@link ol.Map#addLayer}.
              */
             map?: ol.Map;
-            /**
-             * Visibility. Default is `true` (visible).
-             */
-            visible?: boolean;
-            /**
-             * The bounding extent for layer rendering.  The layer will not be rendered
-             * outside of this extent.
-             */
-            extent?: ol.Extent;
-            /**
-             * The minimum resolution (inclusive) at which this layer will be visible.
-             */
-            minResolution?: number;
-            /**
-             * The maximum resolution (exclusive) below which this layer will be visible.
-             */
-            maxResolution?: number;
+           
         }
         /**
          * TODO: This typedef has no documentation. Contact the library author if this typedef should be documented
          */
-        interface TileOptions {
-            /**
-             * Opacity (0, 1). Default is `1`.
-             */
-            opacity?: number;
+        interface TileOptions extends BaseOptions {
+            
             /**
              * Preload. Load low-resolution tiles up to `preload` levels. By default
              * `preload` is `0`, which means no preloading.
@@ -17284,23 +17219,7 @@ declare module olx {
              * managed by the map is to use {@link ol.Map#addLayer}.
              */
             map?: ol.Map;
-            /**
-             * Visibility. Default is `true` (visible).
-             */
-            visible?: boolean;
-            /**
-             * The bounding extent for layer rendering.  The layer will not be rendered
-             * outside of this extent.
-             */
-            extent?: ol.Extent;
-            /**
-             * The minimum resolution (inclusive) at which this layer will be visible.
-             */
-            minResolution?: number;
-            /**
-             * The maximum resolution (exclusive) below which this layer will be visible.
-             */
-            maxResolution?: number;
+            
             /**
              * Use interim tiles on error. Default is `true`.
              */
@@ -17309,13 +17228,13 @@ declare module olx {
         /**
          * TODO: This typedef has no documentation. Contact the library author if this typedef should be documented
          */
-        interface VectorOptions {
+        interface VectorOptions extends BaseOptions {
             /**
              * Render order. Function to be used when sorting features before rendering. By
              * default features are drawn in the order that they are created. Use `null` to
              * avoid the sort, but get an undefined draw order.
              */
-            renderOrder: Function;
+            renderOrder?: Function;
             /**
              * Sets the layer as overlay on a map. The map will not manage this layer in its
              * layers collection, and the layer will be rendered on top. This is useful for
@@ -17323,23 +17242,7 @@ declare module olx {
              * managed by the map is to use {@link ol.Map#addLayer}.
              */
             map?: ol.Map;
-            /**
-             * The bounding extent for layer rendering.  The layer will not be rendered
-             * outside of this extent.
-             */
-            extent?: ol.Extent;
-            /**
-             * The minimum resolution (inclusive) at which this layer will be visible.
-             */
-            minResolution?: number;
-            /**
-             * The maximum resolution (exclusive) below which this layer will be visible.
-             */
-            maxResolution?: number;
-            /**
-             * Opacity. 0-1. Default is `1`.
-             */
-            opacity?: number;
+            
             /**
              * The buffer around the viewport extent used by the renderer when getting
              * features from the vector source for the rendering or hit-detection.
@@ -17368,15 +17271,12 @@ declare module olx {
              * See also `updateWhileAnimating`. Default is `false`.
              */
             updateWhileInteracting?: boolean;
-            /**
-             * Visibility. Default is `true` (visible).
-             */
-            visible?: boolean;
+
         }
         /**
          * TODO: This typedef has no documentation. Contact the library author if this typedef should be documented
          */
-        interface VectorTileOptions {
+        interface VectorTileOptions extends BaseOptions {
             /**
              * The buffer around the tile extent used by the renderer when getting features
              * from the vector tile for the rendering or hit-detection.
@@ -17398,23 +17298,7 @@ declare module olx {
              * managed by the map is to use {@link ol.Map#addLayer}.
              */
             map?: ol.Map;
-            /**
-             * The bounding extent for layer rendering.  The layer will not be rendered
-             * outside of this extent.
-             */
-            extent?: ol.Extent;
-            /**
-             * The minimum resolution (inclusive) at which this layer will be visible.
-             */
-            minResolution?: number;
-            /**
-             * The maximum resolution (exclusive) below which this layer will be visible.
-             */
-            maxResolution?: number;
-            /**
-             * Opacity. 0-1. Default is `1`.
-             */
-            opacity?: number;
+         
             /**
              * Source.
              */
@@ -17436,10 +17320,7 @@ declare module olx {
              * See also `updateWhileAnimating`. Default is `false`.
              */
             updateWhileInteracting?: boolean;
-            /**
-             * Visibility. Default is `true` (visible).
-             */
-            visible?: boolean;
+
         }
     }
     module render {
