@@ -1,19 +1,30 @@
 {
   "name": "ol3",
+  "version": "3.14.0",
+  "keywords": [
+    "map",
+    "mapping",
+    "ol3"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/openlayers/ol3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openlayers/ol3/issues"
+  },
+  "homepage": "http://openlayers.org/",
   "private": true,
   "dependencies": {
- 
+
   },
   "devDependencies": {
   },
   "exportsOverride": {
   },
   "authors": [ "ol3" ],
-  "homepage": "",
-  "description": "local ol3 package",
-  "license": "MIT", 
-  "version": "3.11.2",
+  "license": "MIT",
   "typescript": {
-        "definition": ["v3.11.2/typings/openlayers.d.ts","v3.11.2/typings/proj4.d.ts"]
-   }
+    "definition": [ "v3.14.0/typings/openlayers.d.ts", "v3.14.0/typings/proj4.d.ts" ]
+  }
 }
