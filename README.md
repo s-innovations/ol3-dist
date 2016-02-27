@@ -43,13 +43,13 @@ a requirejs configuration might look like this
         require.config({
             shim: {
                 "openLayers/v3.11.2": {
-                    deps: ["proj4", "css!libs/ol3/v3.11.2/ol.css"],
+                    deps: ["proj4", "css!libs/ol3/v3.11.2/ol3/ol.css"],
                     init: function (proj4) {
                         this.proj.setProj4(proj4);
                     }
                 },
                 "openLayers": {
-                    deps: ["proj4", "css!libs/ol3/v3.14.0/ol.css"],
+                    deps: ["proj4", "css!libs/ol3/v3.14.0/ol3/ol.css"],
                     init: function (proj4) {
                         this.proj.setProj4(proj4);
                     }
@@ -65,8 +65,8 @@ a requirejs configuration might look like this
                 "css":"libs/require-css/css",
                 "text": "libs/text/text",
                 "knockout": "libs/knockout/knockout",
-                "openLayers/v3.11.2": "libs/ol3/v3.11.2/ol",
-                "openLayers": "libs/ol3/v3.14.0/ol",
+                "openLayers/v3.11.2": "libs/ol3/v3.11.2/ol3/ol",
+                "openLayers": "libs/ol3/v3.14.0/ol3/ol",
                 "proj4": "libs/proj4/proj4",
                 "jsts": "libs/jsts/jsts.umd.min",
                 "olLayerSwitcher": "libs/olLayerSwitcher/ol3-layerswitcher.umd"
