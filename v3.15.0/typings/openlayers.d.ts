@@ -30,6 +30,10 @@ Justification: It said so in docs.
 Action: feature.GetGeometry made generic 
 justificatio: This is how we use it in our libraries.
 
+Action: removed proj4 definition. 
+Justification: it conflicts with other proj4 definitons. (dublicate definitons)
+
+
 */
 
 declare module goog {
@@ -45,7 +49,7 @@ declare module goog {
         }
     }
 }
-declare type proj4 = any;
+//declare type proj4 = any;
 declare type EsriJSONGeometry = any;
 declare type GeoJSONObject = any;
 declare type GeoJSONFeatureCollection = any;
