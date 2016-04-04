@@ -1,6 +1,6 @@
 {
   "name": "ol3",
-  "version": "3.14.0",
+  "version": "3.15.0",
   "keywords": [
     "map",
     "mapping",
@@ -25,6 +25,6 @@
   "authors": [ "ol3" ],
   "license": "MIT",
   "typescript": {
-    "definition": [ "v3.14.0/typings/openlayers.d.ts", "v3.14.0/typings/proj4.d.ts" ]
+    "definition": [ "v3.15.0/typings/openlayers.d.ts", "v3.15.0/typings/proj4.d.ts" ]
   }
 }
