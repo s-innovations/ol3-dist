@@ -26,5 +26,6 @@
   "license": "MIT",
   "typescript": {
     "definition": [ "v3.15.0/typings/openlayers.d.ts", "v3.15.0/typings/proj4.d.ts" ]
-  }
+  },
+  "typings":"v3.15.0/typings/openlayers.d.ts"
 }

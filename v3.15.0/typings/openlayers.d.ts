@@ -1,3 +1,5 @@
+
+
 // Type definitions for OpenLayers v3.13.1
 // Project: http://openlayers.org/
 // Definitions by: Jackie Ng <https://github.com/jumpinjackie>
@@ -49,7 +51,7 @@ declare module goog {
         }
     }
 }
-//declare type proj4 = any;
+declare interface proj4 {};
 declare type EsriJSONGeometry = any;
 declare type GeoJSONObject = any;
 declare type GeoJSONFeatureCollection = any;
