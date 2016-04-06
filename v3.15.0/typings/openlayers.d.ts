@@ -51,7 +51,7 @@ declare module goog {
         }
     }
 }
-declare interface proj4 {};
+declare interface proj4 {}
 declare type EsriJSONGeometry = any;
 declare type GeoJSONObject = any;
 declare type GeoJSONFeatureCollection = any;
