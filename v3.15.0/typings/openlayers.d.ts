@@ -35,6 +35,8 @@ justificatio: This is how we use it in our libraries.
 Action: removed proj4 definition. 
 Justification: it conflicts with other proj4 definitons. (dublicate definitons)
 
+Action:   beforeRender(...var_args: Array<ol.PreRenderFunction>): void;
+Justification: documentation
 
 */
 
@@ -1065,7 +1067,7 @@ declare module ol {
          * namespace provides several static methods for creating prerender functions.
          * @param var_args  (Required) Any number of pre-render functions.
          */
-        beforeRender(var_args: ol.PreRenderFunction): void;
+         beforeRender(...var_args: Array<ol.PreRenderFunction>): void;
         /**
          * Detect features that intersect a pixel on the viewport, and execute a
          * callback with each intersecting feature. Layers included in the detection can
