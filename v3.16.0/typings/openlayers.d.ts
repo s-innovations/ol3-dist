@@ -13024,6 +13024,14 @@ breaks.
              * @param opt_this  (Optional) The object to use as `this` in `listener`.
              */
             once(type: string|string[], listener: Function, opt_this?: any): goog.events.Key;
+
+            /**
+             *  src/ol/source/source.js, line 177
+             *  Refreshes the source and finally dispatches a 'change' event.
+             */
+            refresh() :void;
+
+
             /**
              * Unlisten for a certain type of event.
              * @param type  (Required) The event type or array of event types.
