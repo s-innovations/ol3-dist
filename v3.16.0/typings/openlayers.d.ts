@@ -15893,7 +15893,7 @@ declare module olx {
             /**
              * Format constructors.
              */
-            formatConstructors?: (arg0: ol.format.Feature) => any;
+            formatConstructors?: Array<(new <T extends ol.format.Feature>() => T)>;
             /**
              * Target projection. By default, the map's view's projection is used.
              */
