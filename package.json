@@ -1,0 +1,7 @@
+{
+	"version": "3.16.0",
+	"name": "openLayers",
+	"private": true,
+  "devDependencies": {
+  }
+}
