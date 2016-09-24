@@ -3,7 +3,7 @@
 	"name": "openLayers",
 	"private": true,
   	"devDependencies": {
-  	}
+  	},
    	"typescript": {
     		"definition": [ "v3.16.0/typings/openlayers.d.ts", "v3.16.0/typings/proj4.d.ts" ]
   	},
