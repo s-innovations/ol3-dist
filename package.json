@@ -2,6 +2,10 @@
 	"version": "3.16.0",
 	"name": "openLayers",
 	"private": true,
-  "devDependencies": {
-  }
+  	"devDependencies": {
+  	}
+   	"typescript": {
+    		"definition": [ "v3.16.0/typings/openlayers.d.ts", "v3.16.0/typings/proj4.d.ts" ]
+  	},
+  	"typings":"v3.16.0/typings/openlayers.d.ts"
 }
